@@ -20,19 +20,13 @@ const login = (username, password) => {
       password,
     })
     .then((response) => {
-      if (response.data.username) {
-        localStorage.setItem('user', JSON.stringify(response.data));
-      }
-
       return response.data;
     });
 };
 
 const logout = () => {
-  localStorage.removeItem('user');
-  return axios.post(API_URL + 'signout').then((response) => {
-    return response.data;
-  });
+  // localStorage.removeItem('user');
+  return axios.get(API_URL + 'logout');
 };
 
 const getCurrentUser = () => {
