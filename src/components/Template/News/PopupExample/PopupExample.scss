@@ -1,0 +1,35 @@
+.popup-form{
+    padding: 10px 17px;
+    padding-bottom: 22px;
+    form{
+        // display: flex;
+        // flex-direction: column;
+        .author-form-section{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            // justify-content: space-around;
+            .author-input-form-author-section{
+                display: flex;
+                flex-direction: column;
+                input{
+                    font-size: 20px;
+                    padding: 3px 5px;
+                } 
+            };
+        }
+        
+    }
+    span{
+        margin-right: 6px;
+    }
+   
+    .author-input-form-text-section{
+        display: flex;
+        flex-direction: column;
+        input{
+            font-size: 20px;
+            padding: 3px 5px;
+        } 
+    };
+}

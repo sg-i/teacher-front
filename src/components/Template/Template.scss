@@ -1,14 +1,15 @@
 .wrap-template{
     display: flex;
     height: 100vh;
-
+    overflow: auto;
     .menu{
         padding: 20px;
-        width: 320px;
+        width: 280px;
+        // width: fit-content;
         box-shadow: 2px 0px 15px 2px rgba(194, 194, 194, 0.25);
         background-color: white;
         .header{
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -16,6 +17,7 @@
             font-weight: 400;
             font-size: 34px;
             line-height: 33px;
+            padding: 10px 0;
             .img-header{
                 width: 36px;
                 height: 42px;
@@ -25,6 +27,19 @@
                 padding: 5px 10px;
                 text-align: center;
             }
+            
         }
+        .big-section{
+            margin: 13px 0;
+            a{
+                color: black;
+                text-decoration: none;
+            }
+        }
+    }
+    .content-window{
+        flex: 1;
+        padding: 30px 110px 0px 110px;
+        overflow: auto;
     }
 }
