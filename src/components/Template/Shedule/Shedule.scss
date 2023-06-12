@@ -1,0 +1,34 @@
+.news-wrap{
+    // display: flex;
+    // flex-direction: column;
+    // margin: 0 auto;
+    text-align: start;
+    .title-news{
+        display: flex;
+        margin-bottom: 17px;
+        align-items: center;
+        .title-news-name{
+            font-size: 29px;
+            font-weight: 500;
+            margin-right: 15px;
+        }
+        .title-news-img{
+            height: 35px;
+            width: auto;
+            margin-top: 5px;
+            &:hover{
+                background-color: #fff2de;
+                border-radius: 50px;
+            }
+        }
+        
+        
+    }
+    .news-list{
+        overflow: auto;
+    }
+}
+.popup-content {
+    border-radius: 20px;
+   
+}

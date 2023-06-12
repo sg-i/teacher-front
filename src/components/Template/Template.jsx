@@ -5,6 +5,7 @@ import { Delimeter } from './Delimeter/Delimeter';
 import { Section } from './Menu/Section/Section';
 import { News } from './News/News';
 import { AppContext } from '../../context';
+import { Shedule } from './Shedule/Shedule';
 export const Template = ({ logout }) => {
   const context = useContext(AppContext);
   console.log(context);
@@ -84,7 +85,7 @@ export const Template = ({ logout }) => {
           <News />
         </Route>
         <Route path="/schedule" exact>
-          schedule
+          <Shedule />
         </Route>
         <Route path="/swaps" exact>
           swaps

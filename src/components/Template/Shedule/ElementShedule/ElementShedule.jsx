@@ -1,7 +1,7 @@
 import React from 'react';
-import './ElementNews.scss';
+import './ElementShedule.scss';
 import { Delimeter } from '../../Delimeter/Delimeter';
-export const ElementNews = ({ id, deleteFunc, firstname, lastname, patronymic, text, date }) => {
+export const ElementShedule = ({ id, deleteFunc, firstname, lastname, patronymic, text, date }) => {
   function formatDate(inputDate) {
     const date = new Date(inputDate);
 
