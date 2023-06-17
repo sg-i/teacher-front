@@ -1,7 +1,10 @@
 import React from 'react';
 import './ElementNews.scss';
 import { Delimeter } from '../../Delimeter/Delimeter';
+import { useContext } from 'react';
+import { AppContext } from '../../../../context';
 export const ElementNews = ({ id, deleteFunc, firstname, lastname, patronymic, text, date }) => {
+  const context = useContext(AppContext);
   function formatDate(inputDate) {
     const date = new Date(inputDate);
 
@@ -31,13 +34,14 @@ export const ElementNews = ({ id, deleteFunc, firstname, lastname, patronymic, t
             </div>
           </div>
         </div>
-        <div onClick={() => deleteFunc(id)} className="delete-section">
-          <img className="" src="icons/news/delete.png" alt="" />
-        </div>
+        {context.role === 'admin' ? (
+          <div onClick={() => deleteFunc(id)} className="delete-section">
+            <img className="" src="icons/news/delete.png" alt="" />
+          </div>
+        ) : null}
       </div>
       <Delimeter />
       <div className="text-line">{text}</div>
-      <div></div>
     </div>
   );
 };

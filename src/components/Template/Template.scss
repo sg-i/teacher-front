@@ -3,6 +3,7 @@
     height: 100vh;
     overflow: auto;
     .menu{
+        z-index: 1;
         padding: 20px;
         width: 280px;
         // width: fit-content;
@@ -38,6 +39,7 @@
         }
     }
     .content-window{
+        background-color: #F7F8FA;
         flex: 1;
         padding: 30px 110px 0px 110px;
         overflow: auto;

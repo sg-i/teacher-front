@@ -82,7 +82,7 @@ export const Chooser = ({
   }
   const controlMinWidth = '150px'; // Define the minWidth for the control
   const menuMinWidth = `calc(${controlMinWidth} + 10px)`; // Calculate the minWidth for the options
-  console.log(convertToSelectOptions(classes));
+  // console.log(convertToSelectOptions(classes));
 
   return (
     <div className="wrap-chooser">

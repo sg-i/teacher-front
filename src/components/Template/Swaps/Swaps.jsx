@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import './Shedule.scss';
+import './Swaps.scss';
 import UserService from '../../../services/user.service';
 import { ElementShedule } from './ElementShedule/ElementShedule';
 import { AppContext } from '../../../context';
@@ -7,7 +7,7 @@ import 'reactjs-popup/dist/index.css';
 import AdminService from '../../../services/admin.service';
 import { Chooser } from '../Chooser/Chooser';
 import { useUpdateEffect } from 'react-use';
-export const Shedule = () => {
+export const Swaps = () => {
   const context = useContext(AppContext);
   const [shedule, setShedule] = useState({});
   const [classes, setClasses] = useState([{ id: -1, number: '-Все-' }]);
@@ -45,18 +45,10 @@ export const Shedule = () => {
     });
   }, [teacherNow, classNow]);
 
-  const DeleteOneNews = (id) => {
-    // console.log('remove', id);
-    // AdminService.dltNews(id).then((res) => {
-    //   // console.log(res);
-    //   console.log(res.data.dltId);
-    //   setNews(news.filter((elem) => elem.id != res.data.dltId));
-    // });
-  };
   return (
     <div className="shedule-wrap">
       <div className="title-shedule">
-        <div className="title-shedule-name">Расписание</div>
+        <div className="title-shedule-name">Замещения</div>
       </div>
       {teacherNow.value > -1 && (
         <Chooser
@@ -68,26 +60,7 @@ export const Shedule = () => {
           classes={classes}
         />
       )}
-      <div className="shedule-list">
-        {shedule &&
-          Object.keys(shedule).map((elem) => {
-            if (shedule[elem].length) {
-              return <ElementShedule key={elem} data={shedule[elem]} day={elem} />;
-            }
-          })}
-        {/* <div className="first-row">
-          {shedule &&
-            Object.keys(shedule)
-              .slice(0, 3)
-              .map((elem) => <ElementShedule day={elem} />)}
-        </div>
-        <div className="first-row">
-          {shedule &&
-            Object.keys(shedule)
-              .slice(3, 6)
-              .map((elem) => <ElementShedule day={elem} />)}
-        </div> */}
-      </div>
+      <div>sdf</div>
     </div>
   );
 };

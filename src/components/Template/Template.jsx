@@ -1,15 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './Template.scss';
-import { Router, Route, Redirect, Link, useHistory } from 'react-router-dom';
+import { Router, Route, Redirect, Link, useHistory, useLocation } from 'react-router-dom';
 import { Delimeter } from './Delimeter/Delimeter';
 import { Section } from './Menu/Section/Section';
 import { News } from './News/News';
 import { AppContext } from '../../context';
 import { Shedule } from './Shedule/Shedule';
+import { Swaps } from './Swaps/Swaps';
 export const Template = ({ logout }) => {
   const context = useContext(AppContext);
   console.log(context);
-  const [section, setSection] = useState('Доска объявлений');
+  const location = useLocation();
+  const currentUrl = location.pathname;
+  const initialSection =
+    currentUrl == '/news'
+      ? 'Доска объявлений'
+      : currentUrl == '/schedule'
+      ? 'Расписание'
+      : currentUrl == '/swaps'
+      ? 'Замещения'
+      : 'Нормативная база';
+  const [section, setSection] = useState(initialSection);
   function clickSection(name) {
     setSection(name);
   }
@@ -28,6 +39,7 @@ export const Template = ({ logout }) => {
           <img src="logo.png" width={45} alt="profile-img" />
           <p className="role-header">{context.role === 'admin' ? 'Админ' : 'Учитель'}</p>
           <img
+            title="Выйти из аккаунта"
             className="cursor-p"
             onClick={() => ClickForLogout()}
             src="icons/menu/logout.png"
@@ -88,7 +100,7 @@ export const Template = ({ logout }) => {
           <Shedule />
         </Route>
         <Route path="/swaps" exact>
-          swaps
+          <Swaps />
         </Route>
         <Route path="/docs" exact>
           docs
