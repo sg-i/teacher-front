@@ -1,6 +1,6 @@
 .wrap-chooser{
     .chooser{
-        
+        flex-wrap: wrap;
         display: flex;
         gap: 30px;
         .choser-window{
@@ -13,4 +13,20 @@
             border-radius: 10px;
         }
     }
+    @media (max-width: 600px) {
+        /* Стили, применяемые только на маленьких экранах */
+        .chooser{
+            gap:10px;
+        }
+        
+    }
+}
+@media (max-width: 420px) {
+    /* Стили, применяемые только на маленьких экранах */
+    .wrap-chooser{
+        
+        transform: scale(0.8);
+        transform-origin: left top;
+    }
+    
 }

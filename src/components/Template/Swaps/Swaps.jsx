@@ -1,56 +1,59 @@
 import React, { useEffect, useState, useContext } from 'react';
 import './Swaps.scss';
 import UserService from '../../../services/user.service';
-import { ElementShedule } from './ElementShedule/ElementShedule';
+import { ElementSwap } from './ElementSwap/ElementSwap';
 import { AppContext } from '../../../context';
 import 'reactjs-popup/dist/index.css';
 import AdminService from '../../../services/admin.service';
 import { Chooser } from '../Chooser/Chooser';
 import { useUpdateEffect } from 'react-use';
+import { PopupSwaps } from './PopupSwaps/PopupSwaps';
 export const Swaps = () => {
-  const context = useContext(AppContext);
-  const [shedule, setShedule] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const [swaps, setSwaps] = useState([]);
   const [classes, setClasses] = useState([{ id: -1, number: '-Все-' }]);
-  const [teachers, setTeachers] = useState([]);
-  const [teacherNow, setTeacherNow] = useState({ value: -1, label: '' });
+  const [teachers, setTeachers] = useState([{ id: -1, name: '-Все-' }]);
+  const [teacherNow, setTeacherNow] = useState({ value: -1, label: '-Все-' });
   const [classNow, setClassNow] = useState({ value: -1, label: '-Все-' });
   const handleChangeTeacher = (selectedOption) => {
     setTeacherNow(selectedOption);
-    // console.log(`Option selected:`, selectedOption);
   };
   const handleChangeClass = (selectedOption) => {
     setClassNow(selectedOption);
-    // console.log(`Option selected:`, selectedOption);
   };
   useEffect(() => {
+    setLoading(true);
     UserService.getTeacher()
       .then((res) => {
-        // console.log(res.data);
-        setClasses([...classes, ...res.data.class]);
-        setTeachers(res.data.teacher);
-        setTeacherNow({ value: res.data.teacher[0].id, label: res.data.teacher[0].name });
+        setTeachers([...teachers, ...res.data.teacher]);
+        setTeacherNow({ value: -1, label: '-Все-' });
       })
       .catch(function (err) {
         console.log(err);
       });
   }, []);
-  useEffect(() => {
-    // console.log('shedule', shedule);
-  }, [shedule]);
-  useUpdateEffect(() => {
-    // console.log(teacherNow);
-    // console.log(classNow);
-    UserService.getShedule(teacherNow, classNow).then((res) => {
-      setShedule(res.data);
-    });
-  }, [teacherNow, classNow]);
 
+  useUpdateEffect(() => {
+    UserService.getSwaps(teacherNow).then((res) => {
+      setSwaps(res.data);
+      setLoading(false);
+    });
+  }, [teacherNow]);
+
+  const DeleteOneSwap = (id) => {
+    console.log('remove', id);
+    AdminService.dltSwaps(id).then((res) => {
+      window.location.reload();
+    });
+  };
   return (
-    <div className="shedule-wrap">
-      <div className="title-shedule">
-        <div className="title-shedule-name">Замещения</div>
+    <div className="swaps-wrap">
+      <div className="title-swaps">
+        <div className="title-swaps-name">Замещения</div>
+        <PopupSwaps teachers={teachers} />
       </div>
-      {teacherNow.value > -1 && (
+      {!loading && teacherNow.value > -2 && (
         <Chooser
           handleChangeTeacher={handleChangeTeacher}
           teacherNow={teacherNow}
@@ -60,7 +63,15 @@ export const Swaps = () => {
           classes={classes}
         />
       )}
-      <div>sdf</div>
+      <div className="swap-container">
+        {!loading ? (
+          swaps.map((elem) => (
+            <ElementSwap key={elem.date} DeleteOneSwap={DeleteOneSwap} element={elem} />
+          ))
+        ) : (
+          <div>Загрузка..</div>
+        )}
+      </div>
     </div>
   );
 };

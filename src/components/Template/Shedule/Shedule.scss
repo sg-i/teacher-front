@@ -1,7 +1,5 @@
 .shedule-wrap{
-    // display: flex;
-    // flex-direction: column;
-    // margin: 0 auto;
+    
     text-align: start;
     .title-shedule{
         display: flex;
@@ -26,18 +24,28 @@
     }
     .shedule-list{
         display: flex;
-        // flex-direction: column;
         flex-wrap: wrap;
-        // justify-content: space-between;
         gap: 20px;
         margin-top: 20px;
         .first-row{
             display: flex;
-            // flex-wrap: wrap;
         }
+    }
+    @media (max-width:420px) {
+        .shedule-list{
+            margin-top: 0px;
+        }    
+    }
+    @media (max-width: 857px) {
+        /* Стили, применяемые только на маленьких экранах */
+        .shedule-list{
+            justify-content: center;
+        }
+        
     }
 }
 .popup-content {
     border-radius: 20px;
    
 }
+

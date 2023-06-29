@@ -1,0 +1,176 @@
+.wrap-for-dwnload-png{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;    
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+@media (min-width:520px) {
+    .wrap-for-dwnload-png{
+        display: none;
+    }
+}
+.wrapping-for-adding{
+    margin-bottom: 20px;
+    border-radius: 13px;
+}
+.doc-add-btn{
+    cursor: pointer;
+    background-color: white;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 14px;
+    padding: 6px 10px;
+    &:hover{
+        background-color: #fcecd4;
+
+    }
+}
+
+.docs-wrap{
+    
+    text-align: start;
+    .adding-docs-wrap{
+        padding: 14px;
+        border-radius: 14px;
+        box-shadow: 0px 0px 10px 2px rgba(214, 214, 214, 0.25);
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .doc-add-desc{
+            resize: vertical;
+            font-size: 16px;
+            padding: 7px 8px;
+            border-radius: 10px;
+        }
+        .custom-input-doc{
+            padding: 10px;
+            border: 1px solid black;
+            width: fit-content;
+            cursor: pointer;
+            background-color: #f2f2f2;
+            border-radius: 14px;
+            &:hover{
+                background-color: #fff2de;
+            }
+        }
+    }
+    .title-docs{
+        display: flex;
+        margin-bottom: 17px;
+        align-items: center;
+        .title-docs-name{
+            font-size: 29px;
+            font-weight: 500;
+            margin-right: 15px;
+        }
+        .title-docs-img{
+            height: 35px;
+            width: auto;
+            margin-top: 5px;
+            &:hover{
+                background-color: #fff2de;
+                border-radius: 50px;
+            }
+        }
+        
+        
+    }
+    .wrap-for-docs{
+        padding-bottom: 85px;
+        .element-shedule-content{
+            
+            .element-shedule-table{
+                border-radius: 14px;
+                background-color: white;
+                box-shadow: 0px 0px 10px 2px rgba(214, 214, 214, 0.25);
+              
+                border-collapse: collapse;
+                .elem-name{
+                    font-weight: 500;
+                    max-width: 200px;
+                    word-wrap: break-word;
+                    text-align: center;
+                }
+                @media (max-width:1200px) {
+                    .elem-name{
+                        max-width: 140px;
+                        
+                    }
+                }
+                @media (max-width:1000px) {
+                    .elem-name{
+                        max-width: 110px;
+                        
+                    }
+                }
+                @media (max-width:700px) {
+                    .elem-name{
+                        max-width: 70px;
+                        font-size: 14px;
+                        padding: 3px 6px;
+                    }
+                }
+                .button-for-docs{
+                    cursor: pointer;
+                    background-color: white;
+                    padding: 3px 9px;
+                    border-radius: 14px;
+                    font-size: 15px;
+                    &:hover{
+                        background-color: #fcecd4;
+                    }
+                }
+                @media (max-width: 520px) {
+                    .button-for-docs{
+                        display: none;
+                    }
+                    tr{
+                        font-size: 13px;
+                    }
+                } 
+                
+                th {
+                    // width: fit-content;
+                    background-color: #f2f2f2;
+                  }
+                
+                  th:first-child,
+                  td:first-child {
+                    border-left: none; // Удаление левой границы для первой ячейки в строке
+                  }
+                
+                  th:last-child,
+                  td:last-child {
+                    border-right: none; // Удаление правой границы для последней ячейки в строке
+                  }
+                  @media (max-width:700px) {
+                    td{
+                        padding: 3px 6px;
+
+                        
+                    }
+                  }
+                  td {
+
+                    width: fit-content;
+                    padding: 6px 12px;
+                    
+                    border: 1px solid #F4F4F4; // Граница снизу
+                  }
+                  tr:last-child td {
+                    padding-bottom: 5px; // Добавление отступа к последней строке
+                  }
+                  
+            
+            }
+        }
+    }
+    
+}
+.popup-content {
+    border-radius: 20px;
+   
+}

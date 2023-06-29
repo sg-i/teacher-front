@@ -1,0 +1,120 @@
+.wrap-element-swaps{
+    background-color: white;
+    box-shadow: 0px 0px 10px 2px rgba(214, 214, 214, 0.25);
+    border-radius: 17px;
+    margin-bottom: 22px;
+    text-align: center;
+    font-size: 19px;
+ 
+    min-width: max-content;
+    width: auto;
+    padding: 5px 10px;
+
+    flex-direction: column;
+    .title-day{
+       display: flex;
+       align-items: center; 
+       text-align: center  ;
+       justify-content: center;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-top-left-radius: 17px;
+        border-top-right-radius: 17px;
+    }
+    .element-swaps-content{
+        
+        .element-swaps-table{
+          margin: 0 auto;
+          
+            border-collapse: collapse; 
+            tr{
+              
+            }
+            svg{
+              margin: 0 auto;
+              display: flex;
+              align-items: center;
+              margin-bottom: -2px;
+            }
+            @media (max-width: 420px) {
+              /* Стили, применяемые только на маленьких экранах */
+              svg{
+                  width: 25px;
+              }
+              
+            }
+            th {
+                background-color: #f2f2f2;
+              }
+            
+              th:first-child,
+              td:first-child {
+                border-left: none; // Удаление левой границы для первой ячейки в строке
+              }
+            
+              th:last-child,
+              td:last-child {
+                border-right: none; // Удаление правой границы для последней ячейки в строке
+              }
+            
+              td {
+                min-width: 120px;
+                text-align: center; 
+                width: min-content;
+                vertical-align: middle;
+                border: 1px solid #F4F4F4; // Граница снизу
+              }
+              .people-for-swap{
+              }
+              @media (min-width: 1057px) {
+                .people-for-swap {
+                  min-width: 180px;
+                }
+              }
+              @media (max-width: 857px) {
+                .people-for-swap {
+                  min-width: 180px;
+                }
+              }
+              @media (max-width: 460px) {
+                .people-for-swap {
+                  min-width: 0px;
+                }
+              }
+              tr:last-child td {
+                padding-bottom: 5px; // Добавление отступа к последней строке
+              }
+              @media (max-width: 857px) {
+                td {
+                  min-width: 0;
+                }
+              }
+        
+        }
+    }
+    
+    
+}
+@media (max-width: 420px) {
+  /* Стили, применяемые только на маленьких экранах */
+  .wrap-element-swaps{
+      font-size: 16px;
+  }
+  
+}
+
+.button-for-docs{
+  cursor: pointer;
+  background-color: white;
+  padding: 3px 9px;
+  border-radius: 14px;
+  font-size: 15px;
+  &:hover{
+      background-color: #fcecd4;
+  }
+}
+@media (max-width: 458px) {
+  .button-for-docs{
+    width: 17px;
+}
+}

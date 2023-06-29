@@ -3,12 +3,9 @@
     box-shadow: 0px 0px 10px 2px rgba(214, 214, 214, 0.25);
     border-radius: 17px;
     margin-bottom: 22px;
-    // font-weight: 500;
     text-align: center;
     font-size: 19px;
-    // flex: 1;
-    // max-width: 33%;
-    // min-width: 30%;
+    
     display: flex;
     flex-direction: column;
     .title-day{
@@ -18,18 +15,9 @@
         border-top-right-radius: 17px;
     }
     .element-shedule-content{
-        // font-size: 15px;
-        // display: flex;
-        // flex-direction: column;
-        // align-items: center;
-        // justify-content: center;
+        
         .element-shedule-table{
-            // width: 100%;
-            // display: flex;
-            // // justify-content: center;
-            // // justify-content: space-between
-            // gap: 8px;
-            // padding: 2px 5px;
+           
             border-collapse: collapse; 
             th {
                 background-color: #f2f2f2;
@@ -47,7 +35,6 @@
             
               td {
                 padding: 2px 8px;
-                // border-left: 1px solid #F4F4F4; // Граница сверху
                 border: 1px solid #F4F4F4; // Граница снизу
               }
               tr:last-child td {
@@ -59,4 +46,9 @@
     }
     
     
+}
+@media (max-width:450px) {
+  .wrap-element-shedule{
+    font-size: 15px;
+  }
 }

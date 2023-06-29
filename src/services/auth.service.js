@@ -2,13 +2,20 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3000/api/auth/';
 
-const register = (username, password) => {
+const register = (username, password, role) => {
   return axios.post(API_URL + 'signup', {
     username,
     password,
+    role,
   });
 };
-
+const changePassword = (userId, newPassword, currentPassword) => {
+  return axios.post(API_URL + 'editpassword', {
+    userId,
+    newPassword,
+    currentPassword,
+  });
+};
 const checkAuth = () => {
   return axios.get(API_URL + 'checkAuth');
 };
@@ -25,7 +32,6 @@ const login = (username, password) => {
 };
 
 const logout = () => {
-  // localStorage.removeItem('user');
   return axios.get(API_URL + 'logout');
 };
 
@@ -39,6 +45,7 @@ const AuthService = {
   login,
   logout,
   getCurrentUser,
+  changePassword,
 };
 
 export default AuthService;

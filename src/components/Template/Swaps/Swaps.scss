@@ -1,18 +1,27 @@
-.shedule-wrap{
-    // display: flex;
-    // flex-direction: column;
-    // margin: 0 auto;
+.swaps-wrap{
+   
     text-align: start;
-    .title-shedule{
+
+    .swap-container{
+        margin-top: 20px; 
+        width: min-content; 
+    }
+    @media (max-width: 420px) {
+        /* Стили, применяемые только на маленьких экранах */
+        .swap-container{
+            margin-top: 0; 
+        }
+    }
+    .title-swaps{
         display: flex;
         margin-bottom: 17px;
         align-items: center;
-        .title-shedule-name{
+        .title-swaps-name{
             font-size: 29px;
             font-weight: 500;
             margin-right: 15px;
         }
-        .title-shedule-img{
+        .title-swaps-img{
             height: 35px;
             width: auto;
             margin-top: 5px;
@@ -21,19 +30,29 @@
                 border-radius: 50px;
             }
         }
-        
+        @media (max-width: 420px) {
+            /* Стили, применяемые только на маленьких экранах */
+            .title-swaps-name{
+                font-size: 20px;
+            }
+        }
         
     }
-    .shedule-list{
+    @media (max-width: 420px) {
+        /* Стили, применяемые только на маленьких экранах */
+        .title-swaps{
+            margin-bottom: 8px;
+        }
+        
+    }
+    
+    .swaps-list{
         display: flex;
-        // flex-direction: column;
         flex-wrap: wrap;
-        // justify-content: space-between;
         gap: 20px;
         margin-top: 20px;
         .first-row{
             display: flex;
-            // flex-wrap: wrap;
         }
     }
 }

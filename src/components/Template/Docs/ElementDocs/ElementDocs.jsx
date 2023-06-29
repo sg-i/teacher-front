@@ -1,7 +1,6 @@
 import React from 'react';
-import './ElementShedule.scss';
-import { Delimeter } from '../../Delimeter/Delimeter';
-export const ElementShedule = ({ data, day }) => {
+import './ElementDocs.scss';
+export const ElementDocs = ({ data, day }) => {
   function addMissingLessons(lessons) {
     const newLessons = [];
     const lastDay = lessons[lessons.length - 1].lessonNumber;
@@ -29,20 +28,11 @@ export const ElementShedule = ({ data, day }) => {
   }
   const newData = addMissingLessons(data);
   return (
-    <div className="wrap-element-shedule">
+    <div className="wrap-element-docs">
       <div className="title-day">{day}</div>
-      {/* <div className="element-shedule-content">
-        {data.map((elem) => (
-          <div className="element-shedule">
-            <div>{elem.lessonNumber}</div>
-            <div>{elem.subject.name}</div>
-            <div>{elem.teacher.name}</div>
-            <div>{elem.classroom.number}</div>
-          </div>
-        ))}
-      </div> */}
-      <div className="element-shedule-content">
-        <table className="element-shedule-table">
+      
+      <div className="element-docs-content">
+        <table className="element-docs-table">
           <tbody>
             {newData.map((elem) => (
               <tr key={String(elem.id) + String(elem.lessonNumber) + day}>

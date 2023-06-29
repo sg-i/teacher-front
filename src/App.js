@@ -1,12 +1,9 @@
-import logo from './logo.svg';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { AppContext } from './context';
-import { Router, Route, Redirect, Link, useHistory } from 'react-router-dom';
-// import Login from './components/LoginPage/Login';
-import { News } from './components/Template/News/News';
+import { Route, Redirect, useHistory } from 'react-router-dom';
+
 import Login from './components/LoginPage/Login';
-import AuthPage from './components/AuthPage/AuthPage';
 import AuthService from './services/auth.service';
 import { Template } from './components/Template/Template';
 function App() {
@@ -15,6 +12,9 @@ function App() {
   const [roleState, setRoleState] = useState('');
   const [load, setload] = useState(false);
   useEffect(() => {
+    if (vkWidgetRef.current) {
+      vkWidgetRef.current.style.bottom = '80px';
+    }
     AuthService.checkAuth()
       .then(function (res) {
         console.log('/login');
@@ -46,25 +46,18 @@ function App() {
       });
     setload(true);
   };
-
+  const vkWidgetRef = useRef(null);
   return (
     <div className="App">
       <AppContext.Provider value={{ isAuth: authState, role: roleState }}>
-        {/* <Route path="/login" exact>
-          <div>It's Login page</div>
-          df
-          <Login />
-        </Route> */}
-
-        {/* {authState ? <Redirect to="/news" /> : <Redirect to="/login" />} */}
         {load &&
           (authState ? (
-            <div>
+            <div style={{ transform: 'translateY(40px)' }}>
               <Route path="/">
+                <div className="asd" style={{}}>
+                  <div id="vk_community_messages"></div>
+                </div>
                 <Template logout={logout} />
-                {/* <News /> */}
-                {/* </Template> */}
-                {/* <Route path="/news">sdfs</Route> */}
               </Route>
 
               <Route path="/login" exact>
@@ -72,56 +65,16 @@ function App() {
               </Route>
             </div>
           ) : (
-            <div>
+            <div style={{ transform: 'translateY(51px)' }}>
               <Redirect to="/login" />
               <Route path="/login" exact>
                 <Login />
               </Route>
-              {/* <Route to="/news">
-                <Redirect to="/login" />
-              </Route> */}
             </div>
           ))}
       </AppContext.Provider>
     </div>
   );
-
-  // if (authState) {
-  //   return (
-  //     <div className="App">
-  //       <Link to="/">
-  //         <button>/</button>
-  //       </Link>
-  //       <Link to="/login">
-  //         <button>/login</button>
-  //       </Link>
-  //       <Link to="/news">
-  //         <button>/news</button>
-  //       </Link>
-  //       <button onClick={() => setAuthState(false)}>signout</button>
-  //       <AppContext.Provider>
-  //         <Route path="/" exact>
-  //           {/* <News /> */}
-  //           <Redirect to="/news" />
-  //         </Route>
-  //         <Route path="/news" exact>
-  //           <News />
-  //         </Route>
-  //       </AppContext.Provider>
-  //     </div>
-  //   );
-  // } else {
-  //   return (
-  //     <div>
-  //       Ты не авторизован
-  //       <Redirect to="/login" />
-  //       <Route path="/login">
-  //         <div>It's Login page</div>
-  //         <button onClick={() => setAuthState(true)}>signin</button>
-  //       </Route>
-  //     </div>
-  //   );
-  // }
 }
 
 export default App;

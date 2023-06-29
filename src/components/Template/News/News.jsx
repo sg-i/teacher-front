@@ -6,22 +6,27 @@ import { AppContext } from '../../../context';
 import 'reactjs-popup/dist/index.css';
 import { PopupExample } from './PopupExample/PopupExample';
 import AdminService from '../../../services/admin.service';
+import 'react-spinner-animated/dist/index.css';
+
 export const News = () => {
   const context = useContext(AppContext);
+  const [loading, setLoading] = useState(false);
   const [news, setNews] = useState([]);
   useEffect(() => {
+    setLoading(true);
     UserService.getNews()
       .then(function (res) {
         setNews(res.data.news);
+        setLoading(false);
       })
       .catch(function (err) {
         console.log(err);
+        setLoading(false);
       });
   }, []);
   const DeleteOneNews = (id) => {
     console.log('remove', id);
     AdminService.dltNews(id).then((res) => {
-      // console.log(res);
       console.log(res.data.dltId);
       setNews(news.filter((elem) => elem.id != res.data.dltId));
     });
@@ -33,18 +38,22 @@ export const News = () => {
         <PopupExample />
       </div>
       <div className="news-list">
-        {news.map((elem) => (
-          <ElementNews
-            deleteFunc={DeleteOneNews}
-            key={elem.id}
-            id={elem.id}
-            firstname={elem.authorFirstName}
-            lastname={elem.authorLastName}
-            patronymic={elem.authorPatronymic}
-            text={elem.text}
-            date={elem.createdAt}
-          />
-        ))}
+        {!loading ? (
+          news.map((elem) => (
+            <ElementNews
+              deleteFunc={DeleteOneNews}
+              key={elem.id}
+              id={elem.id}
+              firstname={elem.authorFirstName}
+              lastname={elem.authorLastName}
+              patronymic={elem.authorPatronymic}
+              text={elem.text}
+              date={elem.createdAt}
+            />
+          ))
+        ) : (
+          <div>Загрузка..</div>
+        )}
       </div>
     </div>
   );

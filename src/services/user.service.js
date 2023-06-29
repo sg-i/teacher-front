@@ -13,13 +13,31 @@ const getShedule = (teacher, classname) => {
     },
   });
 };
+const getSwaps = (teacher) => {
+  return axios.get(API_URL + 'swaps', {
+    params: {
+      teacher: teacher,
+    },
+  });
+};
 const getTeacher = () => {
   return axios.get(API_URL + 'teachers');
+};
+const getDocs = () => {
+  return axios.get(API_URL + 'docs');
+};
+const getDocById = (documentId) => {
+
+  return axios.get(API_URL + `docs/${documentId}/download`, { responseType: 'blob' });
+
 };
 const UserService = {
   getNews,
   getShedule,
   getTeacher,
+  getSwaps,
+  getDocs,
+  getDocById,
 };
 
 export default UserService;

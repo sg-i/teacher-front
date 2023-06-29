@@ -1,7 +1,5 @@
 .news-wrap{
-    // display: flex;
-    // flex-direction: column;
-    // margin: 0 auto;
+   
     text-align: start;
     .title-news{
         display: flex;
@@ -30,5 +28,5 @@
 }
 .popup-content {
     border-radius: 20px;
-   
+    width: 20%;
 }

@@ -5,7 +5,6 @@ import './PopupExample.scss';
 import AdminService from '../../../../services/admin.service';
 
 export const PopupExample = () => {
-  // const lettersOnlyRegex = /^[A-Za-zА-Яа-яЁё]+$/;
   const lettersOnlyRegex = /^[A-Za-zА-Яа-яЁё]*$/;
   const context = useContext(AppContext);
 
@@ -45,16 +44,37 @@ export const PopupExample = () => {
     setText(text);
   };
   const SubmitFormAddNews = (e) => {
-    // e.preventDefault();
     console.log(Firstname);
     console.log(Lastname);
     console.log(Patronymic);
     console.log(Text);
     AdminService.addNews(Lastname, Firstname, Patronymic, Text).then();
   };
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   if (context.role === 'admin') {
     return (
       <Popup
+        contentStyle={
+          windowWidth < 768
+            ? { width: '90%', maxHeight: '88%', overflow: 'auto' }
+            : windowWidth < 1024
+            ? { width: '65%' }
+            : { width: '50%' }
+        }
+        overlayStyle={{ transform: 'translateY(81px' }}
+        
         trigger={<img className="title-news-img cursor-p" src="/icons/news/add.png" alt="" />}
         modal
         nested>
@@ -77,7 +97,6 @@ export const PopupExample = () => {
               </label>
               <div className="author-form-section">
                 <div className="author-input-form-author-section">
-                  {/* <label htmlFor="">Фамилия</label> */}
                   <input
                     onChange={onChangeLastname}
                     value={Lastname}
@@ -88,7 +107,6 @@ export const PopupExample = () => {
                   />
                 </div>
                 <div className="author-input-form-author-section">
-                  {/* <label htmlFor="">Имя</label> */}
                   <input
                     onChange={onChangeFirstname}
                     value={Firstname}
@@ -99,7 +117,6 @@ export const PopupExample = () => {
                   />
                 </div>
                 <div className="author-input-form-author-section">
-                  {/* <label htmlFor="">Отчество</label> */}
                   <input
                     onChange={onChangePatronymic}
                     value={Patronymic}
@@ -114,7 +131,6 @@ export const PopupExample = () => {
                 Введите текст объявления:
               </label>
               <div className="author-input-form-text-section">
-                {/* <label htmlFor="">Объявление</label> */}
                 <textarea
                   onChange={onChangeText}
                   value={Text}

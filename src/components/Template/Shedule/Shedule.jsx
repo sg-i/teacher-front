@@ -4,11 +4,11 @@ import UserService from '../../../services/user.service';
 import { ElementShedule } from './ElementShedule/ElementShedule';
 import { AppContext } from '../../../context';
 import 'reactjs-popup/dist/index.css';
-import AdminService from '../../../services/admin.service';
 import { Chooser } from '../Chooser/Chooser';
 import { useUpdateEffect } from 'react-use';
+import 'react-spinner-animated/dist/index.css';
 export const Shedule = () => {
-  const context = useContext(AppContext);
+  const [loading, setLoading] = useState(false);
   const [shedule, setShedule] = useState({});
   const [classes, setClasses] = useState([{ id: -1, number: '-Все-' }]);
   const [teachers, setTeachers] = useState([]);
@@ -16,16 +16,15 @@ export const Shedule = () => {
   const [classNow, setClassNow] = useState({ value: -1, label: '-Все-' });
   const handleChangeTeacher = (selectedOption) => {
     setTeacherNow(selectedOption);
-    // console.log(`Option selected:`, selectedOption);
   };
   const handleChangeClass = (selectedOption) => {
+    console.log('selected opt shed', selectedOption);
     setClassNow(selectedOption);
-    // console.log(`Option selected:`, selectedOption);
   };
   useEffect(() => {
+    setLoading(true);
     UserService.getTeacher()
       .then((res) => {
-        // console.log(res.data);
         setClasses([...classes, ...res.data.class]);
         setTeachers(res.data.teacher);
         setTeacherNow({ value: res.data.teacher[0].id, label: res.data.teacher[0].name });
@@ -34,25 +33,19 @@ export const Shedule = () => {
         console.log(err);
       });
   }, []);
-  useEffect(() => {
-    // console.log('shedule', shedule);
-  }, [shedule]);
+
   useUpdateEffect(() => {
-    // console.log(teacherNow);
-    // console.log(classNow);
-    UserService.getShedule(teacherNow, classNow).then((res) => {
-      setShedule(res.data);
-    });
+    UserService.getShedule(teacherNow, classNow)
+      .then((res) => {
+        setShedule(res.data);
+        setLoading(false);
+      })
+      .catch(function (err) {
+        console.log(err);
+        setLoading(false);
+      });
   }, [teacherNow, classNow]);
 
-  const DeleteOneNews = (id) => {
-    // console.log('remove', id);
-    // AdminService.dltNews(id).then((res) => {
-    //   // console.log(res);
-    //   console.log(res.data.dltId);
-    //   setNews(news.filter((elem) => elem.id != res.data.dltId));
-    // });
-  };
   return (
     <div className="shedule-wrap">
       <div className="title-shedule">
@@ -60,6 +53,7 @@ export const Shedule = () => {
       </div>
       {teacherNow.value > -1 && (
         <Chooser
+          full
           handleChangeTeacher={handleChangeTeacher}
           teacherNow={teacherNow}
           teachers={teachers}
@@ -69,24 +63,16 @@ export const Shedule = () => {
         />
       )}
       <div className="shedule-list">
-        {shedule &&
+        {!loading ? (
           Object.keys(shedule).map((elem) => {
+            console.log(shedule);
             if (shedule[elem].length) {
               return <ElementShedule key={elem} data={shedule[elem]} day={elem} />;
             }
-          })}
-        {/* <div className="first-row">
-          {shedule &&
-            Object.keys(shedule)
-              .slice(0, 3)
-              .map((elem) => <ElementShedule day={elem} />)}
-        </div>
-        <div className="first-row">
-          {shedule &&
-            Object.keys(shedule)
-              .slice(3, 6)
-              .map((elem) => <ElementShedule day={elem} />)}
-        </div> */}
+          })
+        ) : (
+          <div>Загрузка..</div>
+        )}
       </div>
     </div>
   );
