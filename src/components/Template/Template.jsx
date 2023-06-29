@@ -11,7 +11,6 @@ import { Docs } from './Docs/Docs';
 import { Users } from './Users/Users';
 export const Template = ({ logout }) => {
   const context = useContext(AppContext);
-  console.log(context);
   const location = useLocation();
   const currentUrl = location.pathname;
   const initialSection =
@@ -30,9 +29,7 @@ export const Template = ({ logout }) => {
   function clickSection(name) {
     setSection(name);
   }
-  useEffect(() => {
-    console.log(section);
-  }, [section]);
+
 
   function ClickForLogout() {
     logout();

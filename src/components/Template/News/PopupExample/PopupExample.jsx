@@ -35,19 +35,12 @@ export const PopupExample = () => {
       setPatronymic(patronymic);
     }
   };
-  useEffect(() => {
-    console.log(Firstname, Lastname, Patronymic, Text);
-  }, [Firstname, Lastname, Patronymic, Text]);
 
   const onChangeText = (e) => {
     const text = e.target.value;
     setText(text);
   };
   const SubmitFormAddNews = (e) => {
-    console.log(Firstname);
-    console.log(Lastname);
-    console.log(Patronymic);
-    console.log(Text);
     AdminService.addNews(Lastname, Firstname, Patronymic, Text).then();
   };
 
@@ -74,7 +67,6 @@ export const PopupExample = () => {
             : { width: '50%' }
         }
         overlayStyle={{ transform: 'translateY(81px' }}
-        
         trigger={<img className="title-news-img cursor-p" src="/icons/news/add.png" alt="" />}
         modal
         nested>

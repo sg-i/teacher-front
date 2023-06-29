@@ -25,9 +25,7 @@ export const News = () => {
       });
   }, []);
   const DeleteOneNews = (id) => {
-    console.log('remove', id);
     AdminService.dltNews(id).then((res) => {
-      console.log(res.data.dltId);
       setNews(news.filter((elem) => elem.id != res.data.dltId));
     });
   };

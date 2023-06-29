@@ -30,7 +30,6 @@ export const ElementSwap = ({ element, DeleteOneSwap }) => {
         return '';
     }
   }
-  console.log(getDay(date));
 
   return (
     <div className="wrap-element-swaps">

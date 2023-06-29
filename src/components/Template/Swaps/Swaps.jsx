@@ -42,7 +42,6 @@ export const Swaps = () => {
   }, [teacherNow]);
 
   const DeleteOneSwap = (id) => {
-    console.log('remove', id);
     AdminService.dltSwaps(id).then((res) => {
       window.location.reload();
     });

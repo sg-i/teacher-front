@@ -18,7 +18,6 @@ export const Shedule = () => {
     setTeacherNow(selectedOption);
   };
   const handleChangeClass = (selectedOption) => {
-    console.log('selected opt shed', selectedOption);
     setClassNow(selectedOption);
   };
   useEffect(() => {
@@ -65,7 +64,6 @@ export const Shedule = () => {
       <div className="shedule-list">
         {!loading ? (
           Object.keys(shedule).map((elem) => {
-            console.log(shedule);
             if (shedule[elem].length) {
               return <ElementShedule key={elem} data={shedule[elem]} day={elem} />;
             }

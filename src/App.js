@@ -17,8 +17,6 @@ function App() {
     }
     AuthService.checkAuth()
       .then(function (res) {
-        console.log('/login');
-        console.log(res.data);
         setAuthState(res.data.authenticated);
         setRoleState(res.data.role);
         setload(true);
@@ -28,15 +26,12 @@ function App() {
         console.log(err);
       });
   }, []);
-  useEffect(() => {
-    console.log('authstate', authState);
-  }, [authState]);
+ 
 
   const logout = () => {
     setload(false);
     AuthService.logout()
       .then(function (res) {
-        console.log('/logout');
         setAuthState(false);
         setRoleState('');
         setload(true);

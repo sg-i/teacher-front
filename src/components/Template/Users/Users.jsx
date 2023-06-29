@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState, useContext } from 'react';
 import AdminService from '../../../services/admin.service';
 import AuthService from '../../../services/auth.service';
@@ -18,12 +16,10 @@ export const Users = () => {
 
   useEffect(() => {
     fetchUsers();
-    console.log('users', users);
   }, []);
 
   const fetchUsers = () => {
     AdminService.getUsers().then((res) => {
-      console.log(res);
       setUsers(res.data);
     });
   };
@@ -42,7 +38,6 @@ export const Users = () => {
   };
 
   const createUser = () => {
-    console.log(newUser);
     AuthService.register(newUser.username, newUser.password, newUser.role).then(() => {
       fetchUsers();
       setNewUser({
@@ -54,7 +49,6 @@ export const Users = () => {
   };
 
   const updateUserPassword = (userId) => {
-    console.log(userId, editPassword, currentPassword);
     AuthService.changePassword(userId, editPassword, currentPassword).then(() => {
       fetchUsers();
       setEditUser(null);
