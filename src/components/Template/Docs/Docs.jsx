@@ -83,7 +83,7 @@ export const Docs = () => {
       <div className="title-docs">
         <div className="title-docs-name">Нормативная база</div>
       </div>
-      {context.role === 'admin' && (
+      {(context.role === 'admin' || context.role === 'superadmin') && (
         <>
           <div style={isOpen ? {} : { margin: 0 }} className="wrapping-for-adding">
             <button
@@ -142,7 +142,7 @@ export const Docs = () => {
                     <td className="elem-name">{document.name}</td>
                     <td>{document.description}</td>
                     <td>
-                      {context.role === 'admin' ? (
+                      {context.role === 'admin' || context.role === 'superadmin' ? (
                         <div
                           style={{ display: 'flex', flexDirection: 'column', marginBottom: 5 }}
                           onClick={() => DeleteOneDoc(document.id)}

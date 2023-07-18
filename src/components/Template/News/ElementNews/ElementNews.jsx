@@ -34,7 +34,7 @@ export const ElementNews = ({ id, deleteFunc, firstname, lastname, patronymic, t
             </div>
           </div>
         </div>
-        {context.role === 'admin' ? (
+        {context.role === 'admin' || context.role === 'superadmin' ? (
           <div onClick={() => deleteFunc(id)} className="delete-section">
             <img className="" src="icons/news/delete.png" alt="" />
           </div>

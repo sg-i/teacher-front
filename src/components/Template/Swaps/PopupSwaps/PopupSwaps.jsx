@@ -49,7 +49,9 @@ export const PopupSwaps = ({ teachers }) => {
   const SubmitFormAddSwaps = (e) => {
     if (selected && OldPeople && NewPeople) {
       if (OldPeople.value != NewPeople.value && OldPeople.value != -1 && NewPeople.value != -1) {
-        AdminService.addSwaps(selected, getDatOfWeek(), OldPeople, NewPeople).then();
+        AdminService.addSwaps(selected, getDatOfWeek(), OldPeople, NewPeople).then(() => {
+          window.location.reload();
+        });
       } else {
         e.preventDefault();
 
@@ -73,7 +75,7 @@ export const PopupSwaps = ({ teachers }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  if (context.role === 'admin') {
+  if (context.role === 'admin' || context.role === 'superadmin') {
     return (
       <Popup
         contentStyle={

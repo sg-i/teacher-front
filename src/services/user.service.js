@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/';
+const API_URL = 'http://a0836076.xsph.ru/api/';
 
 const getNews = () => {
   return axios.get(API_URL + 'news');
@@ -27,9 +27,7 @@ const getDocs = () => {
   return axios.get(API_URL + 'docs');
 };
 const getDocById = (documentId) => {
-
   return axios.get(API_URL + `docs/${documentId}/download`, { responseType: 'blob' });
-
 };
 const UserService = {
   getNews,

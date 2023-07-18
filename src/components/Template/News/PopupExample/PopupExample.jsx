@@ -41,7 +41,9 @@ export const PopupExample = () => {
     setText(text);
   };
   const SubmitFormAddNews = (e) => {
-    AdminService.addNews(Lastname, Firstname, Patronymic, Text).then();
+    AdminService.addNews(Lastname, Firstname, Patronymic, Text).then(() => {
+      window.location.reload();
+    });
   };
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -56,7 +58,7 @@ export const PopupExample = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  if (context.role === 'admin') {
+  if (context.role === 'admin' || context.role === 'superadmin') {
     return (
       <Popup
         contentStyle={

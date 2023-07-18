@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './Template.scss';
-import {  Route, Redirect, Link,  useLocation } from 'react-router-dom';
+import { Route, Redirect, Link, useLocation } from 'react-router-dom';
 import { Delimeter } from './Delimeter/Delimeter';
 import { Section } from './Menu/Section/Section';
 import { News } from './News/News';
@@ -29,7 +29,6 @@ export const Template = ({ logout }) => {
   function clickSection(name) {
     setSection(name);
   }
-
 
   function ClickForLogout() {
     logout();
@@ -118,7 +117,7 @@ export const Template = ({ logout }) => {
               <Link to={'/users'}>
                 <Section
                   clickSection={clickSection}
-                  icon={null}
+                  icon={'user.png'}
                   section={section}
                   name={'Пользователи'}
                 />

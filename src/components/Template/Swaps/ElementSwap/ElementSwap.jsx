@@ -65,7 +65,7 @@ export const ElementSwap = ({ element, DeleteOneSwap }) => {
                 <td className="people-for-swap" style={{ borderLeft: 'none' }}>
                   <div style={{ marginTop: -2, textWrap: 'nowrap' }}>{elem.newTeacher.name}</div>
                 </td>
-                {context.role === 'admin' ? (
+                {context.role === 'admin'||context.role === 'superadmin' ? (
                   <td style={{ maxWidth: '50px', alignItems: 'center' }}>
                     <div
                       style={{

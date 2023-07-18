@@ -26,7 +26,6 @@ function App() {
         console.log(err);
       });
   }, []);
- 
 
   const logout = () => {
     setload(false);

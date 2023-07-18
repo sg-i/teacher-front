@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/';
+const API_URL = 'http://a0836076.xsph.ru/api/';
 
 const addNews = (lastname, firstname, patrotymic, text) => {
   return axios.post(API_URL + 'news/add', { lastname, firstname, patrotymic, text });
@@ -24,7 +24,7 @@ const dltSwaps = (id) => {
 };
 
 const addDocs = (formData) => {
-  return axios.post(API_URL + '/docs/add', formData);
+  return axios.post(API_URL + 'docs/add', formData);
 };
 const dltDocs = (id) => {
   return axios.post(API_URL + 'docs/delete', { id });
